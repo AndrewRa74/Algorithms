@@ -126,30 +126,30 @@ class QuickSort {
     QuickSort(int[] massive) {
         this.massive = massive;
     }
-    public void _quickSort(int[] array, int low, int high) {
-        if (array.length == 0) return; //Базовый случай
+    public void _quickSort(int[] massive, int low, int high) {
+        if (massive.length == 0) return; //Базовый случай
         if (low >= high) return; //Базовый случай, делить больше нечего
         //Найдем опорный элемент (например, средний)
         int middle = low + (high - low) / 2;
-        int pivot = array[middle];
+        int pivot = massive[middle];
         //Разделим массив на 2 части меньше опорного элемента и больше опорного элемента
         int i = low;
         int j = high;
         while (i <= j) {
-            while (array[i] < pivot) i++;//Пока элементы слева меньше опорного, оставляем их на месте
-            while (array[j] > pivot) j--;//Пока элементы справа больше опорного, оставляем их на месте
+            while (massive[i] < pivot) i++;//Пока элементы слева меньше опорного, оставляем их на месте
+            while (massive[j] > pivot) j--;//Пока элементы справа больше опорного, оставляем их на месте
             if (i <= j) { //Найденные элементы меняем местами
-                int temp = array[i];
-                array[i] = array[j];
-                array[j] = temp;
+                int temp = massive[i];
+                massive[i] = massive[j];
+                massive[j] = temp;
                 i++;
                 j--;
             }
         }
         //Пока левая граница не пришла направо, а правая налево
         //рекурсивно вызываем _quickSort
-        if (j > low) _quickSort(array, low, j);
-        if (i < high) _quickSort(array, i, high);
+        if (j > low) _quickSort(massive, low, j);
+        if (i < high) _quickSort(massive, i, high);
     }
     public String toString(int[] array) {
         String str = "[";
